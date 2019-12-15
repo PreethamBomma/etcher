@@ -9,13 +9,13 @@ async function main(context) {
   }
 
   const appName = context.packager.appInfo.productFilename
-  const appleId = 'accounts+apple@balena.io'
+  const appleId = 'cedric.verstraeten@sap.com'
 
   await notarize({
-    appBundleId: 'io.balena.etcher',
+    appBundleId: 'io.kerberos.etcher',
     appPath: `${appOutDir}/${appName}.app`,
     appleId,
-    appleIdPassword: `@keychain:Application Loader: ${appleId}`
+    appleIdPassword: `@keychain:AC_PASSWORD`
   })
 }
 
