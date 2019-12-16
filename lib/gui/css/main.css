@@ -5880,10 +5880,10 @@ button.close {
  * limitations under the License.
  */
 html {
-  background-color: #4d5057; }
+  background-color: #943733; }
 
 body {
-  background-color: #4d5057; }
+  background-color: #943733; }
 
 .checkbox input[type="checkbox"] {
   position: initial;
@@ -5961,7 +5961,7 @@ body {
   padding: 8px 25px; }
 
 .label-inset {
-  background-color: #35373c;
+  background-color: #6e2926;
   color: #919191; }
 
 .label-danger {
