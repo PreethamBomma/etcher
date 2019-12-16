@@ -112,13 +112,11 @@ const MainPage = ({ $state }: any) => {
 					style={{
 						cursor: 'pointer',
 					}}
-					onClick={() =>
-						openExternal('https://www.balena.io/etcher?ref=etcher_footer')
-					}
+					onClick={() => openExternal('https://www.kerberos.io')}
 					tabIndex={100}
 				>
 					<SvgIcon
-						paths={['../../assets/etcher.svg']}
+						paths={['../../assets/kerberosio.svg']}
 						width="123px"
 						height="22px"
 					></SvgIcon>

@@ -1,7 +1,7 @@
 {
-  "name": "balena-etcher",
+  "name": "kerberosio-etcher",
   "private": true,
-  "displayName": "balenaEtcher",
+  "displayName": "kerberosioEtcher",
   "version": "1.5.70",
   "packageType": "local",
   "updates": {
