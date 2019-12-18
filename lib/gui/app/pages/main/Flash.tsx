@@ -254,7 +254,7 @@ export const Flash = ({
 						callback={tryFlash}
 					></ProgressButton>
 
-					{isFlashing && (
+					{isFlashing && state.type !== 'downloading' && (
 						<button
 							className="button button-link button-abort-write"
 							onClick={imageWriter.cancel}
