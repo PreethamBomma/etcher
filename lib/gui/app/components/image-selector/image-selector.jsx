@@ -48,6 +48,7 @@ const {
 const middleEllipsis = require('../../utils/middle-ellipsis')
 const SVGIcon = require('../svg-icon/svg-icon.jsx')
 const { default: styled } = require('styled-components')
+const KiOSSelectorModal = require('../kios-selector/KiOSSelectorModal.jsx')
 
 // TODO move these styles to rendition
 const ModalText = styled.p `
@@ -98,7 +99,8 @@ class ImageSelector extends React.Component {
     this.state = {
       ...getState(),
       warning: null,
-      showImageDetails: false
+      showImageDetails: false,
+      showVersions: false,
     }
 
     this.openImageSelector = this.openImageSelector.bind(this)
@@ -252,20 +254,9 @@ class ImageSelector extends React.Component {
       applicationSessionUuid: store.getState().toJS().applicationSessionUuid,
       flashingWorkflowUuid: store.getState().toJS().flashingWorkflowUuid
     })
-
-    osDialog.selectImage().then((imagePath) => {
-      // Avoid analytics and selection state changes
-      // if no file was resolved from the dialog.
-      if (!imagePath) {
-        analytics.logEvent('Image selector closed', {
-          applicationSessionUuid: store.getState().toJS().applicationSessionUuid,
-          flashingWorkflowUuid: store.getState().toJS().flashingWorkflowUuid
-        })
-        return
-      }
-
-      this.selectImageByPath(imagePath)
-    }).catch(exceptionReporter.report)
+    this.setState({
+      showVersion: true,
+    })
   }
 
   handleOnDrop (acceptedFiles) {
@@ -294,7 +285,8 @@ class ImageSelector extends React.Component {
       flashing
     } = this.props
     const {
-      showImageDetails
+      showImageDetails,
+      showVersion
     } = this.state
 
     const hasImage = selectionState.hasImage()
@@ -344,20 +336,16 @@ class ImageSelector extends React.Component {
                 <StepButton
                   onClick={this.openImageSelector}
                 >
-                  Select image
+                  Select KiOS
                 </StepButton>
-                <Footer>
-                  { mainSupportedExtensions.join(', ') }, and{' '}
-                  <Underline
-                    tooltip={ extraSupportedExtensions.join(', ') }
-                  >
-                    many more
-                  </Underline>
-                </Footer>
               </StepSelection>
             )}
           </div>
         </div>
+
+        { showVersion && <KiOSSelectorModal
+  					close={() => this.setState({showVersion: false})}
+          /> }
 
         {Boolean(this.state.warning) && (
           <Modal

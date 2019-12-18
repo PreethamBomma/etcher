@@ -117,8 +117,8 @@ const MainPage = ({ $state }: any) => {
 				>
 					<SvgIcon
 						paths={['../../assets/kerberosio.svg']}
-						width="123px"
-						height="22px"
+						width="126px"
+						height="120px"
 					></SvgIcon>
 				</span>
 
@@ -155,6 +155,7 @@ const MainPage = ({ $state }: any) => {
 					)}
 				</span>
 			</header>
+
 			{hideSettings ? null : (
 				<SettingsModal
 					toggleModal={(value: boolean) => {
