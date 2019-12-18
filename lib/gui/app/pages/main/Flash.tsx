@@ -74,6 +74,9 @@ const getErrorMessageFromCode = (errorCode: string) => {
 const flashImageToDrive = async (goToSuccess: () => void) => {
 	const devices = selection.getSelectedDevices();
 	const image: any = selection.getImage();
+	console.log(image);
+	const version: any = selection.getSelectedVersion();
+	console.log(version);
 	const drives = _.filter(availableDrives.getDrives(), (drive: any) => {
 		return _.includes(devices, drive.device);
 	});
@@ -88,9 +91,10 @@ const flashImageToDrive = async (goToSuccess: () => void) => {
 	driveScanner.stop();
 
 	const iconPath = '../../assets/icon.png';
-	const basename = path.basename(image.path);
+	const imagePath = '/Users/i353408/Downloads/kios-raspberrypi2-2.8.0.img.gz'; // image.path;
+	const basename = path.basename(imagePath);
 	try {
-		await imageWriter.flash(image.path, drives);
+		await imageWriter.flash(imagePath, drives);
 		if (!flashState.wasLastFlashCancelled()) {
 			const flashResults: any = flashState.getFlashResults();
 			notification.send('Flash complete!', {
@@ -110,7 +114,7 @@ const flashImageToDrive = async (goToSuccess: () => void) => {
 		}
 
 		notification.send('Oops! Looks like the flash failed.', {
-			body: messages.error.flashFailure(path.basename(image.path), drives),
+			body: messages.error.flashFailure(path.basename(imagePath), drives),
 			icon: iconPath,
 		});
 
@@ -142,7 +146,7 @@ const flashImageToDrive = async (goToSuccess: () => void) => {
  */
 const getProgressButtonLabel = () => {
 	if (!flashState.isFlashing()) {
-		return 'Flash!';
+		return 'Flash it!';
 	}
 
 	return progressStatus.fromFlashState(flashState.getFlashState());
@@ -205,6 +209,9 @@ export const Flash = ({
 	const tryFlash = async () => {
 		const devices = selection.getSelectedDevices();
 		const image = selection.getImage();
+		const version = selection.getSelectedVersion();
+		console.log(version);
+
 		const drives = _.filter(availableDrives.getDrives(), (drive: any) => {
 			return _.includes(devices, drive.device);
 		});

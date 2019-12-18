@@ -290,10 +290,12 @@ class ImageSelector extends React.Component {
     } = this.state
 
     const hasImage = selectionState.hasImage()
-
     const imageBasename = hasImage ? path.basename(selectionState.getImagePath()) : ''
     const imageName = selectionState.getImageName()
     const imageSize = selectionState.getImageSize()
+
+    const hasVersion = selectionState.hasVersion();
+    const version = selectionState.getSelectedVersion()
 
     return (
       <React.Fragment>
@@ -308,15 +310,14 @@ class ImageSelector extends React.Component {
           </Dropzone>
 
           <div className="space-vertical-large">
-            {hasImage ? (
+            {hasVersion ? (
               <React.Fragment>
                 <StepNameButton
                   plain
-                  onClick={this.showSelectedImageDetails}
-                  tooltip={imageBasename}
+                  tooltip={version.name}
                 >
                   {/* eslint-disable no-magic-numbers */}
-                  { middleEllipsis(imageName || imageBasename, 20) }
+                  { middleEllipsis(version.name, 20) }
                 </StepNameButton>
                 { !flashing &&
                   <ChangeButton
@@ -328,7 +329,7 @@ class ImageSelector extends React.Component {
                   </ChangeButton>
                 }
                 <DetailsText>
-                  {shared.bytesToClosestUnit(imageSize)}
+                  Raspberry Pi 4
                 </DetailsText>
               </React.Fragment>
             ) : (

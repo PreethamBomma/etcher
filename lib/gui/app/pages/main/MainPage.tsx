@@ -86,7 +86,7 @@ const MainPage = ({ $state }: any) => {
 	};
 
 	const isFlashing = flashState.isFlashing();
-	const shouldDriveStepBeDisabled = !selectionState.hasImage();
+	const shouldDriveStepBeDisabled = !selectionState.hasVersion();
 	const shouldFlashStepBeDisabled =
 		!selectionState.hasDrive() || shouldDriveStepBeDisabled;
 	const hasDrive = selectionState.hasDrive();
