@@ -15,7 +15,6 @@
  */
 
 import * as _ from 'lodash';
-import * as path from 'path';
 import * as React from 'react';
 import { Modal, Txt } from 'rendition';
 import * as constraints from '../../../../shared/drive-constraints';
@@ -73,10 +72,8 @@ const getErrorMessageFromCode = (errorCode: string) => {
 
 const flashImageToDrive = async (goToSuccess: () => void) => {
 	const devices = selection.getSelectedDevices();
-	const image: any = selection.getImage();
-	console.log(image);
-	const version: any = selection.getSelectedVersion();
-	console.log(version);
+	const version = selection.getSelectedVersion();
+
 	const drives = _.filter(availableDrives.getDrives(), (drive: any) => {
 		return _.includes(devices, drive.device);
 	});
@@ -90,9 +87,9 @@ const flashImageToDrive = async (goToSuccess: () => void) => {
 	// otherwise Windows throws EPERM
 	driveScanner.stop();
 
-	const iconPath = '../../assets/icon.png';
-	const imagePath = '/Users/i353408/Downloads/kios-raspberrypi2-2.8.0.img.gz'; // image.path;
-	const basename = path.basename(imagePath);
+	const iconPath = '../../../assets/icon.png';
+	const imagePath = version;
+	const basename = imagePath;
 	try {
 		await imageWriter.flash(imagePath, drives);
 		if (!flashState.wasLastFlashCancelled()) {
@@ -114,7 +111,7 @@ const flashImageToDrive = async (goToSuccess: () => void) => {
 		}
 
 		notification.send('Oops! Looks like the flash failed.', {
-			body: messages.error.flashFailure(path.basename(imagePath), drives),
+			body: messages.error.flashFailure(basename, drives),
 			icon: iconPath,
 		});
 
@@ -209,8 +206,6 @@ export const Flash = ({
 	const tryFlash = async () => {
 		const devices = selection.getSelectedDevices();
 		const image = selection.getImage();
-		const version = selection.getSelectedVersion();
-		console.log(version);
 
 		const drives = _.filter(availableDrives.getDrives(), (drive: any) => {
 			return _.includes(devices, drive.device);
