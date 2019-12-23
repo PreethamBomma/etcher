@@ -127,7 +127,8 @@ const MainPage = ({ $state }: any) => {
 					style={{
 						float: 'right',
 						position: 'absolute',
-						right: 0,
+						right: '15px',
+						top: '15px',
 					}}
 				>
 					<Button
@@ -167,7 +168,7 @@ const MainPage = ({ $state }: any) => {
 
 			<div
 				className="page-main row around-xs"
-				style={{ margin: '80px 50px 110px 50px' }}
+				style={{ margin: '50px 50px 110px 50px' }}
 			>
 				<div className="col-xs">
 					<ImageSelector flashing={isFlashing} />

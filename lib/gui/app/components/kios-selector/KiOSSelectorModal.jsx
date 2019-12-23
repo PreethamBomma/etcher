@@ -71,6 +71,9 @@ const KiOSSelectorModal = ({ close }) => {
       }
     }
     if(step.count === 3) {
+      if(!selectionState.hasNetworkConfig()){
+        return
+      }
       close()
     }
     setStep({ count: step.count + 1 });
