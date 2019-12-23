@@ -32,6 +32,24 @@ const SelectBoard = () => {
       padding: '0'
     }}>
       {_.map(boards, (board, index) => {
+
+        // Beautify
+        let board_beauty = board
+        let board_beauty_footer = ""
+        if(board == "raspberrypi") {
+          board_beauty = "Raspberry Pi 1 (2012-2017)"
+          board_beauty_footer = "A, A+, B, B+, Zero (Wireless)"
+        } else if(board == "raspberrypi2") {
+          board_beauty = "Raspberry Pi 2 (2015)"
+          board_beauty_footer = "B"
+        } if(board == "raspberrypi3") {
+          board_beauty = "Raspberry Pi 3 (2016-2018)"
+          board_beauty_footer = "A+, B, B+"
+        } if(board == "raspberrypi4") {
+          board_beauty = "Raspberry Pi 4 (2019)"
+          board_beauty_footer = "B (1GB), B (2GB), B (4GB)"
+        }
+
         return (
           <li
             key={`item-${board}`}
@@ -43,7 +61,12 @@ const SelectBoard = () => {
               className="list-group-item-section list-group-item-section-expanded"
               tabIndex={ 15 + index }>
 
-            { board }
+            { board_beauty }
+
+
+            { board_beauty_footer !== "" && <p className="list-group-item-text">
+              { board_beauty_footer }
+            </p> }
 
             </div>
             <span className="list-group-item-section tick tick--success"

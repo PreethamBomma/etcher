@@ -59,6 +59,10 @@ const KiOSSelectorModal = ({ close }) => {
       if(!selectionState.hasVersion()){
         return
       }
+    } else if(step.count === 1) {
+      if(!selectionState.hasBoard()){
+        return
+      }
     }
     if(step.count === 3) {
       close()
