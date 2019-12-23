@@ -34,6 +34,7 @@ const { bytesToClosestUnit } = require('../../../../shared/units')
 const utils = require('../../../../shared/utils')
 const ChooseVersion = require('./ChooseVersion.jsx')
 const SelectBoard = require('./SelectBoard.jsx')
+const SelectNetwork = require('./SelectNetwork.jsx')
 const { open: openExternal } = require('../../os/open-external/services/open-external')
 
 /**
@@ -61,6 +62,10 @@ const KiOSSelectorModal = ({ close }) => {
       }
     } else if(step.count === 1) {
       if(!selectionState.hasBoard()){
+        return
+      }
+    } else if(step.count === 2) {
+      if(!selectionState.hasConnection()){
         return
       }
     }
@@ -92,7 +97,7 @@ const KiOSSelectorModal = ({ close }) => {
 
       { step.count === 0 && <ChooseVersion /> }
       { step.count === 1 && <SelectBoard /> }
-      { step.count === 2 && <ChooseVersion /> }
+      { step.count === 2 && <SelectNetwork /> }
       { step.count === 3 && <ChooseVersion /> }
 
       {confirmModal.open && <Modal

@@ -63,7 +63,6 @@ const SelectBoard = () => {
 
             { board_beauty }
 
-
             { board_beauty_footer !== "" && <p className="list-group-item-text">
               { board_beauty_footer }
             </p> }

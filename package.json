@@ -76,6 +76,7 @@
     "mime-types": "^2.1.18",
     "nan": "^2.14.0",
     "node-ipc": "^9.1.1",
+    "node-wifi-scanner": "^1.1.2-np",
     "path-is-inside": "^1.0.2",
     "pretty-bytes": "^1.0.4",
     "prop-types": "^15.5.9",
