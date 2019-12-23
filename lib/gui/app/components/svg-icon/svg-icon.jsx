@@ -122,12 +122,14 @@ class SVGIcon extends react.Component {
 
     const width = this.props.width || DEFAULT_SIZE
     const height = this.props.height || DEFAULT_SIZE
+    const margin = this.props.margin || 0
 
     return react.createElement('img', {
       className: 'svg-icon',
       style: {
         width,
-        height
+        height,
+        marginTop: margin,
       },
       src: svgData,
       disabled: this.props.disabled

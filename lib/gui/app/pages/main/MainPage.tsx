@@ -119,6 +119,7 @@ const MainPage = ({ $state }: any) => {
 						paths={['../../assets/kerberosio.svg']}
 						width="126px"
 						height="120px"
+						margin="80px"
 					></SvgIcon>
 				</span>
 
@@ -164,7 +165,10 @@ const MainPage = ({ $state }: any) => {
 				/>
 			)}
 
-			<div className="page-main row around-xs" style={{ margin: '110px 50px' }}>
+			<div
+				className="page-main row around-xs"
+				style={{ margin: '80px 50px 110px 50px' }}
+			>
 				<div className="col-xs">
 					<ImageSelector flashing={isFlashing} />
 				</div>
