@@ -297,6 +297,9 @@ class ImageSelector extends React.Component {
     const hasVersion = selectionState.hasVersion();
     const version = selectionState.getSelectedVersion()
 
+    const hasBoard = selectionState.hasBoard();
+    const board = selectionState.getSelectedBoard()
+
     return (
       <React.Fragment>
         <div className="box text-center relative">
@@ -319,6 +322,9 @@ class ImageSelector extends React.Component {
                   {/* eslint-disable no-magic-numbers */}
                   { middleEllipsis(version.name, 20) }
                 </StepNameButton>
+                { hasBoard  && <DetailsText>
+                  { board }
+                </DetailsText> }
                 { !flashing &&
                   <ChangeButton
                     plain
@@ -328,9 +334,6 @@ class ImageSelector extends React.Component {
                     Change
                   </ChangeButton>
                 }
-                <DetailsText>
-                  Raspberry Pi 4
-                </DetailsText>
               </React.Fragment>
             ) : (
               <StepSelection>

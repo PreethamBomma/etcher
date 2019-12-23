@@ -35,6 +35,7 @@ const utils = require('../../../../shared/utils')
 const ChooseVersion = require('./ChooseVersion.jsx')
 const SelectBoard = require('./SelectBoard.jsx')
 const SelectNetwork = require('./SelectNetwork.jsx')
+const SetNetworkConfiguration = require('./SetNetworkConfiguration.jsx')
 const { open: openExternal } = require('../../os/open-external/services/open-external')
 
 /**
@@ -79,9 +80,9 @@ const KiOSSelectorModal = ({ close }) => {
   if (step.count === 1) {
     title = 'Select Board'
   } else if (step.count === 2) {
-    title = 'Specify connection'
+    title = 'Select Network'
   } else if (step.count === 3) {
-    title = 'Dynamic or static IP'
+    title = 'Set Network Configurations'
   }
 
   return (
@@ -98,7 +99,7 @@ const KiOSSelectorModal = ({ close }) => {
       { step.count === 0 && <ChooseVersion /> }
       { step.count === 1 && <SelectBoard /> }
       { step.count === 2 && <SelectNetwork /> }
-      { step.count === 3 && <ChooseVersion /> }
+      { step.count === 3 && <SetNetworkConfiguration /> }
 
       {confirmModal.open && <Modal
         {...confirmModal.options}
