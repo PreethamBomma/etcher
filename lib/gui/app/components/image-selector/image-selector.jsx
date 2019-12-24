@@ -303,38 +303,23 @@ class ImageSelector extends React.Component {
     return (
       <React.Fragment>
         <div className="box text-center relative">
-          <Dropzone multiple={false} onDrop={this.handleOnDrop}>
-            {({ getRootProps, getInputProps }) => (
-              <div className="center-block" {...getRootProps()}>
-                <input {...getInputProps()} />
-                <SVGIcon contents={selectionState.getImageLogo()} paths={[ '../../assets/image.svg' ]} />
-              </div>
-            )}
-          </Dropzone>
+          <SVGIcon contents={selectionState.getImageLogo()} paths={[ '../../assets/image.svg' ]} />
 
           <div className="space-vertical-large">
             {hasVersion ? (
-              <React.Fragment>
-                <StepNameButton
-                  plain
-                  tooltip={version.name}
+              <StepSelection>
+                <StepButton
+                  onClick={this.reselectImage}
                 >
                   {/* eslint-disable no-magic-numbers */}
                   { middleEllipsis(version.name, 20) }
-                </StepNameButton>
-                { hasBoard  && <DetailsText>
-                  { board }
-                </DetailsText> }
-                { !flashing &&
-                  <ChangeButton
-                    plain
-                    mb={14}
-                    onClick={this.reselectImage}
-                  >
-                    Change
-                  </ChangeButton>
-                }
-              </React.Fragment>
+                </StepButton>
+                { hasBoard  &&  <p style={{
+                  color:"#fff",
+                  marginTop: "10px",
+                  opacity: 0.5,
+                }}> { board } </p>  }
+              </StepSelection>
             ) : (
               <StepSelection>
                 <StepButton

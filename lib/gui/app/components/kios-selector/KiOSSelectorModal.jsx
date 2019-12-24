@@ -93,6 +93,10 @@ const KiOSSelectorModal = ({ close }) => {
       className='modal-drive-selector-modal'
       title={title}
       done={incrementStep}
+      cancel={close}
+      primaryButtonProps={{
+        primary: true,
+      }}
       action='Continue'
       style={{
         padding: '20px 30px 11px 30px'

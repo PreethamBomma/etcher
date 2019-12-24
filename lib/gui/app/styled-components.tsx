@@ -57,6 +57,7 @@ export const ThemedProvider = (props: any) => (
 
 export const BaseButton = styled(Button)`
 	height: 48px;
+	radius: '24px';
 `;
 
 export const StepButton = (props: any) => (

@@ -5965,7 +5965,7 @@ body {
   color: #919191; }
 
 .label-danger {
-  background-color: #d9534f;
+  background-color: #943733;
   color: #fff; }
 
 /*
@@ -6054,30 +6054,30 @@ body {
   pointer-events: none; }
 
 .button-default {
-  background-color: #ececec;
+  background-color: #943733;
   color: #b3b3b3; }
 
 .button-default:focus,
 .button-default:hover {
-  background-color: lightgray;
+  background-color: #6e2926;
   color: #b3b3b3; }
 
 .button-primary {
-  background-color: #2297de;
+  background-color: #943733;
   color: #fff; }
 
 .button-primary:focus,
 .button-primary:hover {
-  background-color: #1b79b2;
+  background-color: #6e2926;
   color: #fff; }
 
 .button-danger {
-  background-color: #d9534f;
+  background-color: #943733;
   color: #fff; }
 
 .button-danger:focus,
 .button-danger:hover {
-  background-color: #c9302c;
+  background-color: #6e2926;
   color: #fff; }
 
 .button-warning {
@@ -6122,8 +6122,8 @@ body {
 
 .tick--error {
   color: #fff;
-  background-color: #d9534f;
-  border-color: #d9534f; }
+  background-color: #943733;
+  border-color: #943733; }
 
 /*
  * Copyright 2016 balena.io
@@ -6167,7 +6167,7 @@ body {
   max-height: 250px;
   overflow: auto; }
   .modal-body a {
-    color: #2297de; }
+    color: #943733; }
   .modal-body > p {
     white-space: pre-line; }
   .modal-body > p:last-child {
@@ -6265,12 +6265,12 @@ body {
     border: none;
     border-radius: 50% 50%; }
   .modal-drive-selector-modal .list-group-item .drive-init-progress::-webkit-progress-bar {
-    background-color: #ececec;
+    background-color: #943733;
     border: none;
     outline: none; }
   .modal-drive-selector-modal .list-group-item .drive-init-progress::-webkit-progress-value {
-    border-bottom: 1px solid #176a9c;
-    background-color: #2297de; }
+    border-bottom: 1px solid #5b221f;
+    background-color: #943733; }
 
 .modal-drive-selector-modal .list-group-item-heading {
   font-size: 13px; }
@@ -6372,7 +6372,7 @@ img[disabled] {
 
 .page-main .button.step-footer {
   font-size: 16px;
-  color: #2297de;
+  color: #943733;
   border-radius: 0;
   padding: 0;
   width: 100%;
@@ -6439,7 +6439,7 @@ img[disabled] {
   .target-status-line.target-status-successful > .target-status-dot {
     background-color: #5fb835; }
   .target-status-line.target-status-failed > .target-status-dot {
-    background-color: #d9534f; }
+    background-color: #943733; }
   .target-status-line > .target-status-quantity {
     color: white;
     font-weight: bold; }
@@ -6499,7 +6499,7 @@ img[disabled] {
 
 .page-finish .separator-xs {
   flex-grow: 0;
-  background-color: #64686a;
+  background-color: #943733;
   padding: 0px;
   min-width: 2px; }
 
@@ -9830,7 +9830,7 @@ body {
   color: #787c7f;
   margin: 0 30px 16px 30px;
   padding-top: 15px;
-  border-top: 2px solid #64686a;
+  border-top: 2px solid #943733;
   text-align: center; }
   .section-footer-main .col-xs {
     padding: 0; }
