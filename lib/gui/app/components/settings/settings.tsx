@@ -168,6 +168,13 @@ export const SettingsModal: any = styled(
 					width: 780,
 					height: 420,
 				}}
+				primaryButtonProps={{
+					primary: false,
+					style: {
+						backgroundColor: '#943733',
+						color: '#fff',
+					},
+				}}
 			>
 				<div>
 					{_.map(settingsList, (setting: Setting, i: number) => {

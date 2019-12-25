@@ -96,7 +96,7 @@ const flashImageToDrive = async (goToSuccess: () => void) => {
 			const flashResults: any = flashState.getFlashResults();
 			notification.send('Flash complete!', {
 				body: messages.info.flashComplete(
-					basename,
+					basename.name,
 					drives as any,
 					flashResults.results.devices,
 				),
@@ -111,13 +111,13 @@ const flashImageToDrive = async (goToSuccess: () => void) => {
 		}
 
 		notification.send('Oops! Looks like the flash failed.', {
-			body: messages.error.flashFailure(basename, drives),
+			body: messages.error.flashFailure(basename.name, drives),
 			icon: iconPath,
 		});
 
 		let errorMessage = getErrorMessageFromCode(error.code);
 		if (!errorMessage) {
-			error.image = basename;
+			error.image = basename.name;
 			analytics.logException(error);
 			errorMessage = messages.error.genericFlashError();
 		}

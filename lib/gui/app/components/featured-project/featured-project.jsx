@@ -34,7 +34,7 @@ class FeaturedProject extends React.Component {
   componentDidMount () {
     return settings.load()
       .then(() => {
-        const endpoint = settings.get('featuredProjectEndpoint') || 'https://kerberos.io'
+        const endpoint = settings.get('featuredProjectEndpoint') || 'https://cloud.kerberos.io'
         this.setState({ endpoint })
       })
       .catch(analytics.logException)
