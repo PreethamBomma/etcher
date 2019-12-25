@@ -13,9 +13,9 @@
       ]
     },
     "builder": {
-      "appId": "io.balena.etcher",
+      "appId": "io.kerberos.etcher",
       "copyright": "Copyright 2016-2019 Balena Ltd",
-      "productName": "balenaEtcher",
+      "productName": "kerberosEtcher",
       "nodeGypRebuild": true,
       "afterPack": "./afterPack.js",
       "files": [
