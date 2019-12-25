@@ -92,15 +92,11 @@ function FinishPage({ $state }: any) {
 							Thanks for using
 							<span
 								style={{ cursor: 'pointer' }}
-								onClick={() =>
-									openExternal(
-										'https://balena.io/etcher?ref=etcher_offline_banner',
-									)
-								}
+								onClick={() => openExternal('https://kerberos.io')}
 							>
 								<SVGIcon
-									paths={['../../assets/etcher.svg']}
-									width="165px"
+									paths={['../../assets/kerberosio.svg']}
+									width="100px"
 									height="auto"
 								></SVGIcon>
 							</span>
@@ -115,9 +111,7 @@ function FinishPage({ $state }: any) {
 							by
 							<span
 								style={{ cursor: 'pointer' }}
-								onClick={() =>
-									openExternal('https://balena.io?ref=etcher_success')
-								}
+								onClick={() => openExternal('https://balena.io')}
 							>
 								<SVGIcon
 									paths={['../../assets/balena.svg']}
