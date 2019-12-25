@@ -40,8 +40,7 @@ import { bytesToClosestUnit } from '../../../../shared/units';
 import { DriveSelector } from './DriveSelector';
 import { Flash } from './Flash';
 
-const DEFAULT_SUPPORT_URL =
-	'https://github.com/balena-io/etcher/blob/master/SUPPORT.md';
+const DEFAULT_SUPPORT_URL = 'https://github.com/kerberos-io/kios';
 
 const getDrivesTitle = (selection: any) => {
 	const drives = selection.getSelectedDrives();
@@ -119,7 +118,7 @@ const MainPage = ({ $state }: any) => {
 						paths={['../../assets/kerberosio.svg']}
 						width="126px"
 						height="120px"
-						margin="80px"
+						margin="60px"
 					></SvgIcon>
 				</span>
 
@@ -168,7 +167,7 @@ const MainPage = ({ $state }: any) => {
 
 			<div
 				className="page-main row around-xs"
-				style={{ margin: '50px 50px 110px 50px' }}
+				style={{ margin: '40px 50px 110px 50px' }}
 			>
 				<div className="col-xs">
 					<ImageSelector flashing={isFlashing} />

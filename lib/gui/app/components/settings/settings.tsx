@@ -70,10 +70,6 @@ interface Setting {
 
 const settingsList: Setting[] = [
 	{
-		name: 'errorReporting',
-		label: 'Anonymously report errors and usage statistics to balena.io',
-	},
-	{
 		name: 'unmountOnSuccess',
 		/**
 		 * On Windows, "Unmounting" basically means "ejecting".
@@ -190,9 +186,7 @@ export const SettingsModal: any = styled(
 					<div>
 						<span
 							onClick={() =>
-								openExternal(
-									'https://github.com/balena-io/etcher/blob/master/CHANGELOG.md',
-								)
+								openExternal('https://github.com/kerberos-io/etcher')
 							}
 						>
 							<FontAwesomeIcon icon={faGithub} /> {version}

@@ -66,23 +66,13 @@ const TargetSelector = (props) => {
     const target = targets[0]
     return (
       <React.Fragment>
-        <StepNameButton
-          plain
-          tooltip={props.tooltip}
+        <StepButton
+          onClick={props.reselectDrive}
         >
           {/* eslint-disable no-magic-numbers */}
           { middleEllipsis(target.description, 20) }
-        </StepNameButton>
-        {!props.flashing &&
-          <ChangeButton
-            plain
-            mb={14}
-            onClick={props.reselectDrive}
-          >
-            Change
-          </ChangeButton>
-        }
-        <DetailsText>
+        </StepButton>
+
           { props.constraints.hasListDriveImageCompatibilityStatus(targets, props.image) &&
             <Txt.span className='glyphicon glyphicon-exclamation-sign'
               ml={2}
@@ -91,8 +81,13 @@ const TargetSelector = (props) => {
               }
             />
           }
-          { bytesToClosestUnit(target.size) }
-        </DetailsText>
+          <p style={{
+            color:"#fff",
+            marginTop: "10px",
+            opacity: 0.5,
+          }}> { bytesToClosestUnit(target.size) }
+          </p>
+
       </React.Fragment>
     )
   }
@@ -118,21 +113,12 @@ const TargetSelector = (props) => {
     }
     return (
       <React.Fragment>
-        <StepNameButton
-          plain
+        <StepButton
           tooltip={props.tooltip}
+          onClick={props.reselectDrive}
         >
           {targets.length} Targets
-        </StepNameButton>
-        { !props.flashing &&
-          <ChangeButton
-            plain
-            onClick={props.reselectDrive}
-            mb={14}
-          >
-            Change
-          </ChangeButton>
-        }
+        </StepButton>
         {targetsTemplate}
       </React.Fragment>
     )

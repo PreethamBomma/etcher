@@ -95,7 +95,11 @@ const KiOSSelectorModal = ({ close }) => {
       done={incrementStep}
       cancel={close}
       primaryButtonProps={{
-        primary: true,
+        primary: false,
+        style: {
+          backgroundColor: "#943733",
+          color: "#fff"
+        }
       }}
       action='Continue'
       style={{

@@ -22,6 +22,10 @@ $btn-min-width: 170px;
 $link-color: #ddd;
 $disabled-opacity: 0.2;
 
+div[role='menubar'] button {
+  width: 100% !important;
+}
+
 @import "../../../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
 @import "./modules/theme";
 @import "./modules/bootstrap";

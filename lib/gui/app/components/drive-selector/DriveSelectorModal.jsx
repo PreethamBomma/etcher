@@ -245,8 +245,11 @@ const DriveSelectorModal = ({ close }) => {
         padding: '20px 30px 11px 30px'
       }}
       primaryButtonProps={{
-        primary: !hasStatus,
-        warning: hasStatus
+        primary: false,
+        style: {
+          backgroundColor: "#943733",
+          color: "#fff"
+        }
       }}
     >
       <div>
