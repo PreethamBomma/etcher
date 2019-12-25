@@ -44,7 +44,7 @@
       "git add"
     ]
   },
-  "author": "Balena Inc. <hello@etcher.io>",
+  "author": "Kerberos.io <cedric@verstraeten.io>",
   "license": "Apache-2.0",
   "platformSpecificDependencies": [
     "fsevents",
