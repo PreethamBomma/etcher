@@ -15,7 +15,7 @@ async function main(context) {
     appBundleId: 'io.kerberos.etcher',
     appPath: `${appOutDir}/${appName}.app`,
     appleId,
-    appleIdPassword: `@keychain:AC_PASSWORD`
+    appleIdPassword: 'dmbi-eyju-fbsw-wbri'
   })
 }
 
