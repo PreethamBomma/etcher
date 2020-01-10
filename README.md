@@ -6,6 +6,8 @@ The goal is to get Kerberos.io up and running in a few clicks, and a couple of m
 
 A huge thanks for the collaborators of the Etcher project, and especially @jviotti for starting with this amazing product.
 
+***
+
 > Flash OS images to SD cards & USB drives, safely and easily.
 
 Etcher is a powerful OS image flasher built with web technologies to ensure
