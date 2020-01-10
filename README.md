@@ -1,6 +1,6 @@
 # (Kerberos) Etcher
 
-Kerberos Etcher is a fork of the [Etcher repo](https://github.com/balena-io/etcher). We've have added some functionality on top of Etcher, to make it easier for our Kerberos.io users to get started. The idea of Kerberos Etcher, is that it will download the desired version of Kerberos.io for you, and afterwards set the right network configuration. 
+Kerberos Etcher is a fork of the [Etcher repo](https://github.com/balena-io/etcher). We've have added some functionality on top of Etcher, to make it easier for our Kerberos.io users to get started. The idea of Kerberos Etcher, is that it will **download the desired version** of Kerberos.io for you, and afterwards **set the right network configuration**. 
 
 The goal is to get Kerberos.io up and running in a few clicks, and a couple of minutes.
 
