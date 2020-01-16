@@ -2,7 +2,7 @@
   "name": "kerberosio-etcher",
   "private": true,
   "displayName": "kerberosioEtcher",
-  "version": "1.5.70",
+  "version": "1.5.71",
   "packageType": "local",
   "updates": {
     "enabled": true,
