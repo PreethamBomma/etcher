@@ -19,15 +19,15 @@ import * as React from 'react';
 import { Modal, Txt } from 'rendition';
 import * as constraints from '../../../../shared/drive-constraints';
 import * as messages from '../../../../shared/messages';
-import * as DriveSelectorModal from '../../components/drive-selector/DriveSelectorModal.jsx';
-import * as ProgressButton from '../../components/progress-button/progress-button.jsx';
-import * as SvgIcon from '../../components/svg-icon/svg-icon.jsx';
+import { DriveSelectorModal } from '../../components/drive-selector/DriveSelectorModal';
+import { ProgressButton } from '../../components/progress-button/progress-button';
+import { SVGIcon } from '../../components/svg-icon/svg-icon';
 import * as availableDrives from '../../models/available-drives';
 import * as flashState from '../../models/flash-state';
 import * as selection from '../../models/selection-state';
-import * as store from '../../models/store';
+import { store } from '../../models/store';
 import * as analytics from '../../modules/analytics';
-import * as driveScanner from '../../modules/drive-scanner';
+import { scanner as driveScanner } from '../../modules/drive-scanner';
 import * as imageWriter from '../../modules/image-writer';
 import * as progressStatus from '../../modules/progress-status';
 import * as notification from '../../os/notification';
@@ -70,7 +70,7 @@ const getErrorMessageFromCode = (errorCode: string) => {
 	return '';
 };
 
-const flashImageToDrive = async (goToSuccess: () => void) => {
+async function flashImageToDrive(goToSuccess: () => void): Promise<string> {
 	const devices = selection.getSelectedDevices();
 	const version = selection.getSelectedVersion();
 
@@ -78,7 +78,6 @@ const flashImageToDrive = async (goToSuccess: () => void) => {
 		return _.includes(devices, drive.device);
 	});
 
-	// eslint-disable-next-line no-magic-numbers
 	if (drives.length === 0 || flashState.isFlashing()) {
 		return '';
 	}
@@ -94,14 +93,15 @@ const flashImageToDrive = async (goToSuccess: () => void) => {
 		await imageWriter.flash(imagePath, drives);
 		if (!flashState.wasLastFlashCancelled()) {
 			const flashResults: any = flashState.getFlashResults();
-			notification.send('Flash complete!', {
-				body: messages.info.flashComplete(
-					basename.name,
+			notification.send(
+				'Flash complete!',
+				messages.info.flashComplete(
+					basename,
 					drives as any,
 					flashResults.results.devices,
 				),
-				icon: iconPath,
-			});
+				iconPath,
+			);
 			goToSuccess();
 		}
 	} catch (error) {
@@ -110,10 +110,11 @@ const flashImageToDrive = async (goToSuccess: () => void) => {
 			return '';
 		}
 
-		notification.send('Oops! Looks like the flash failed.', {
-			body: messages.error.flashFailure(basename.name, drives),
-			icon: iconPath,
-		});
+		notification.send(
+			'Oops! Looks like the flash failed.',
+			messages.error.flashFailure(path.basename(image.path), drives),
+			iconPath,
+		);
 
 		let errorMessage = getErrorMessageFromCode(error.code);
 		if (!errorMessage) {
@@ -129,7 +130,7 @@ const flashImageToDrive = async (goToSuccess: () => void) => {
 	}
 
 	return '';
-};
+}
 
 /**
  * @summary Get progress button label
@@ -146,30 +147,24 @@ const getProgressButtonLabel = () => {
 		return 'Flash it!';
 	}
 
-	return progressStatus.fromFlashState(flashState.getFlashState());
+	// TODO: no any
+	return progressStatus.fromFlashState(flashState.getFlashState() as any);
 };
 
 const formatSeconds = (totalSeconds: number) => {
 	if (!totalSeconds && !_.isNumber(totalSeconds)) {
 		return '';
 	}
-	// eslint-disable-next-line no-magic-numbers
 	const minutes = Math.floor(totalSeconds / 60);
-	// eslint-disable-next-line no-magic-numbers
 	const seconds = Math.floor(totalSeconds - minutes * 60);
 
 	return `${minutes}m${seconds}s`;
 };
 
-export const Flash = ({
-	shouldFlashStepBeDisabled,
-	lastFlashErrorCode,
-	progressMessage,
-	goToSuccess,
-}: any) => {
+export const Flash = ({ shouldFlashStepBeDisabled, goToSuccess }: any) => {
 	const state: any = flashState.getFlashState();
 	const isFlashing = flashState.isFlashing();
-	const flashErrorCode = lastFlashErrorCode();
+	const flashErrorCode = flashState.getLastFlashErrorCode();
 
 	const [warningMessages, setWarningMessages] = React.useState<string[]>([]);
 	const [errorMessage, setErrorMessage] = React.useState('');
@@ -193,10 +188,8 @@ export const Flash = ({
 		flashState.resetState();
 		if (shouldRetry) {
 			analytics.logEvent('Restart after failure', {
-				applicationSessionUuid: (store as any).getState().toJS()
-					.applicationSessionUuid,
-				flashingWorkflowUuid: (store as any).getState().toJS()
-					.flashingWorkflowUuid,
+				applicationSessionUuid: store.getState().toJS().applicationSessionUuid,
+				flashingWorkflowUuid: store.getState().toJS().flashingWorkflowUuid,
 			});
 		} else {
 			selection.clear();
@@ -211,7 +204,6 @@ export const Flash = ({
 			return _.includes(devices, drive.device);
 		});
 
-		// eslint-disable-next-line no-magic-numbers
 		if (drives.length === 0 || flashState.isFlashing()) {
 			return;
 		}
@@ -229,10 +221,10 @@ export const Flash = ({
 	};
 
 	return (
-		<React.Fragment>
+		<>
 			<div className="box text-center">
 				<div className="center-block">
-					<SvgIcon
+					<SVGIcon
 						paths={['../../assets/flash.svg']}
 						disabled={shouldFlashStepBeDisabled}
 					/>
@@ -240,7 +232,6 @@ export const Flash = ({
 
 				<div className="space-vertical-large">
 					<ProgressButton
-						tabindex="3"
 						striped={state.type === 'verifying'}
 						active={isFlashing}
 						percentage={state.percentage}
@@ -274,7 +265,7 @@ export const Flash = ({
 								<span className="target-status-dot"></span>
 								<span className="target-status-quantity">{state.failed}</span>
 								<span className="target-status-message">
-									{progressMessage.failed(state.failed)}{' '}
+									{messages.progress.failed(state.failed)}{' '}
 								</span>
 							</div>
 						</div>
@@ -282,7 +273,6 @@ export const Flash = ({
 				</div>
 			</div>
 
-			{/* eslint-disable-next-line no-magic-numbers */}
 			{warningMessages && warningMessages.length > 0 && (
 				<Modal
 					width={400}
@@ -320,6 +310,6 @@ export const Flash = ({
 					close={() => setShowDriveSelectorModal(false)}
 				></DriveSelectorModal>
 			)}
-		</React.Fragment>
+		</>
 	);
 };

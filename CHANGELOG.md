@@ -3,6 +3,54 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+# v1.5.79
+## (2020-02-20)
+
+* Remove "Download the React DevTools for a better development experience" message [Alexis Svinartchouk]
+* Fix error when launching from terminal when installed via apt. [Alois Klink]
+
+# v1.5.78
+## (2020-02-19)
+
+* Update drivelist to 8.0.10 to fix parsing lsblk --pairs [Alexis Svinartchouk]
+
+# v1.5.77
+## (2020-02-17)
+
+* Fix error message not being shown on write error [Alexis Svinartchouk]
+* The RGBLed module has been moved to a separate repository [Alexis Svinartchouk]
+
+# v1.5.76
+## (2020-02-05)
+
+* Prefix temp permissions script name [Lorenzo Alberto Maria Ambrosi]
+* Fix image drop zone, remove react-dropzone dependency [Alexis Svinartchouk]
+* Update etcher-sdk to ^2.0.17 [Alexis Svinartchouk]
+
+# v1.5.75
+## (2020-02-05)
+
+* Initialize leds object map [Omar López]
+
+# v1.5.74
+## (2020-02-04)
+
+* Etcher pro leds feature [Alexis Svinartchouk]
+* Compress deb package with bzip instead of xz [Alexis Svinartchouk]
+* Update electron to 7.1.11 [Alexis Svinartchouk]
+* Sort devices by device path on Linux [Alexis Svinartchouk]
+
+# v1.5.73
+## (2020-01-28)
+
+* Update electron to v7.1.10 [Alexis Svinartchouk]
+
+# v1.5.72
+## (2020-01-27)
+
+* Remove no longer used angular svg-icon component [Alexis Svinartchouk]
+* Remove no longer used closestUnit angular filter [Alexis Svinartchouk]
+
 # v1.5.71
 ## (2020-01-14)
 
