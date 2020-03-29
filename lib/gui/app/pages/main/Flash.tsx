@@ -112,7 +112,7 @@ async function flashImageToDrive(goToSuccess: () => void): Promise<string> {
 
 		notification.send(
 			'Oops! Looks like the flash failed.',
-			messages.error.flashFailure(path.basename(image.path), drives),
+			messages.error.flashFailure(imagePath, drives),
 			iconPath,
 		);
 

@@ -140,12 +140,11 @@ export class MainPage extends React.Component<
 							onClick={() => openExternal('https://www.kerberos.io')}
 							tabIndex={100}
 						>
-							<SvgIcon
+							<SVGIcon
 								paths={['../../assets/kerberosio.svg']}
 								width="126px"
 								height="120px"
-								margin="60px"
-							></SvgIcon>
+							></SVGIcon>
 						</span>
 
 						<span
@@ -174,7 +173,7 @@ export class MainPage extends React.Component<
 									onClick={() =>
 										openExternal(
 											selectionState.getImageSupportUrl() ||
-												'https://github.com/balena-io/etcher/blob/master/SUPPORT.md',
+												DEFAULT_SUPPORT_URL,
 										)
 									}
 									tabIndex={5}

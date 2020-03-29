@@ -59,8 +59,23 @@ const DEFAULT_STATE = Immutable.fromJS({
 	applicationSessionUuid: '',
 	flashingWorkflowUuid: '',
 	availableDrives: [],
+	availableVersions: [],
+	availableBoards: [],
+	availableSSIDS: [],
 	selection: {
 		devices: Immutable.OrderedSet(),
+		version: {},
+		board: null,
+		// internet connection
+		connection: null,
+		ssid: null,
+		custom_ssid: null,
+		password: null,
+		// network configurations
+		network_config: null,
+		ip_address: null,
+		ip_gateway: null,
+		ip_dns: '8.8.8.8',
 	},
 	isFlashing: false,
 	flashResults: {},
@@ -90,6 +105,16 @@ export enum Actions {
 	DESELECT_IMAGE,
 	SET_APPLICATION_SESSION_UUID,
 	SET_FLASHING_WORKFLOW_UUID,
+	SELECT_VERSION,
+	SELECT_BOARD,
+	SELECT_CONNECTION,
+	SELECT_SSID,
+	SET_CUSTOM_SSID,
+	SET_PASSWORD_SSID,
+	SELECT_NETWORK_CONFIG,
+	SELECT_IP,
+	SELECT_GATEWAY,
+	SELECT_DNS,
 }
 
 interface Action {

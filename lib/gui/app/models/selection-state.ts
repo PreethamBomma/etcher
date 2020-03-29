@@ -159,3 +159,178 @@ export function isDriveSelected(driveDevice: string) {
 	const selectedDriveDevices = getSelectedDevices();
 	return _.includes(selectedDriveDevices, driveDevice);
 }
+
+export function getSelectedVersion() {
+	return _.get(store.getState().toJS(), ['selection', 'version']);
+}
+
+export function hasVersion() {
+	return !_.isEmpty(getSelectedVersion());
+}
+
+export function isVersionSelected(version: any) {
+	if (!version) {
+		return false;
+	}
+	const selectedVersion = getSelectedVersion();
+	return selectedVersion.assets_url === version.assets_url;
+}
+
+export function selectVersion(version: any) {
+	store.dispatch({
+		type: Actions.SELECT_VERSION,
+		data: version,
+	});
+}
+
+export function hasBoard() {
+	return !_.isEmpty(getSelectedBoard());
+}
+
+export function getSelectedBoard() {
+	return _.get(store.getState().toJS(), ['selection', 'board']);
+}
+
+export function selectBoard(board: string) {
+	store.dispatch({
+		type: Actions.SELECT_BOARD,
+		data: board,
+	});
+}
+
+export function isBoardSelected(board: string) {
+	if (!board) {
+		return false;
+	}
+	const b = getSelectedBoard();
+	return b === board;
+}
+
+export function hasConnection() {
+	const connection = getSelectedConnection();
+	if (connection) {
+		if (connection === 'Wireless') {
+			const ssid = getSelectedSSID();
+			if (ssid && ssid !== '') {
+				if (ssid === 'SSID is not in the list') {
+					const customSsid = getCustomSSID();
+					const passwordSsid = getPasswordSSID();
+					return (
+						customSsid &&
+						customSsid !== '' &&
+						passwordSsid &&
+						passwordSsid !== ''
+					);
+				} else {
+					const passwordSsid = getPasswordSSID();
+					return passwordSsid && passwordSsid !== '';
+				}
+			}
+			return false;
+		}
+		return true;
+	}
+	return false;
+}
+
+export function selectConnection(connection: string) {
+	store.dispatch({
+		type: Actions.SELECT_CONNECTION,
+		data: connection,
+	});
+}
+
+export function getSelectedConnection() {
+	return _.get(store.getState().toJS(), ['selection', 'connection']);
+}
+
+export function getSelectedSSID() {
+	return _.get(store.getState().toJS(), ['selection', 'ssid']);
+}
+
+export function selectSSID(ssid: string) {
+	store.dispatch({
+		type: Actions.SELECT_SSID,
+		data: ssid,
+	});
+}
+
+export function getCustomSSID() {
+	return _.get(store.getState().toJS(), ['selection', 'custom_ssid']);
+}
+
+export function setCustomSSID(ssid: string) {
+	store.dispatch({
+		type: Actions.SET_CUSTOM_SSID,
+		data: ssid,
+	});
+}
+
+export function getPasswordSSID() {
+	return _.get(store.getState().toJS(), ['selection', 'password']);
+}
+
+export function setPassword(password: string) {
+	store.dispatch({
+		type: Actions.SET_PASSWORD_SSID,
+		data: password,
+	});
+}
+
+export function selectNetworkConfig(networkconfig: string) {
+	store.dispatch({
+		type: Actions.SELECT_NETWORK_CONFIG,
+		data: networkconfig,
+	});
+}
+
+export function getSelectedNetworkConfig() {
+	return _.get(store.getState().toJS(), ['selection', 'network_config']);
+}
+
+export function selectIP(ip: string) {
+	store.dispatch({
+		type: Actions.SELECT_IP,
+		data: ip,
+	});
+}
+
+export function getSelectedIP() {
+	return _.get(store.getState().toJS(), ['selection', 'ip_address']);
+}
+
+export function selectGateway(gateway: string) {
+	store.dispatch({
+		type: Actions.SELECT_GATEWAY,
+		data: gateway,
+	});
+}
+
+export function getSelectedGateway() {
+	return _.get(store.getState().toJS(), ['selection', 'ip_gateway']);
+}
+
+export function selectDNS(dns: string) {
+	store.dispatch({
+		type: Actions.SELECT_DNS,
+		data: dns,
+	});
+}
+
+export function getSelectedDNS() {
+	return _.get(store.getState().toJS(), ['selection', 'ip_dns']);
+}
+
+export function hasNetworkConfig() {
+	const networkConfig = getSelectedNetworkConfig();
+	if (networkConfig) {
+		if (networkConfig === 'Static IP') {
+			const ip = getSelectedIP();
+			const gateway = getSelectedGateway();
+			const dns = getSelectedDNS();
+			return ip && ip !== '' && gateway && gateway !== '' && dns && dns !== '';
+		}
+		return true;
+	}
+	return false;
+}
